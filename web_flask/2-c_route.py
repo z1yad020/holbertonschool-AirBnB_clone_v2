@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
 '''
-task 1
+task 2
 '''
 
 from flask import Flask
+from markupsafe import escape
+
+
 app = Flask(__name__)
 
 
@@ -16,6 +19,10 @@ def hello_hbnb():
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     return "HBNB"
+
+@app.route("/c/<text>", strict_slashes=False)
+def c_is_fun(text):
+    return f'c {escape(text).replace("_", " ")}'
 
 
 if __name__ == '__main__':
